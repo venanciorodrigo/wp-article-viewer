@@ -55,7 +55,7 @@ class PageTemplater {
 
         // Add your templates to this array.
         $this->templates = array(
-            '../public/partials/template.php' => 'Article Viewer'
+            '../article-view-wp-api-vue/template.php' => 'Article Viewer'
         );
 
     }

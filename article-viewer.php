@@ -8,6 +8,13 @@ Author: Rodrigo Venancio
 Author URI: http://rodrigovenancio.info/
 */
 
+/* Create a page template without using the theme folder */
 require_once( 'includes/custom-template.php' );
 
 add_action( 'plugins_loaded', array( 'PageTemplater', 'get_instance' ) );
+
+/* WP-API Extensions */
+require_once( 'includes/extend-wp-api.php' );
+
+add_action( 'rest_api_init', 'add_prev_post' );
+add_action( 'rest_api_init', 'add_next_post' );
