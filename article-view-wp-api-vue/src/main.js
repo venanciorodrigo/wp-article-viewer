@@ -4,6 +4,9 @@ import VueTouch from 'vue-touch'
 import App from './App.vue'
 
 // Swipping on touch-enabled devices
+VueTouch.config.swipe = {
+  direction: 'horizontal'
+};
 Vue.use(VueTouch)
 
 Vue.use(VueResource);
