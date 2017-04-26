@@ -20,7 +20,7 @@ Wordpress Plugin that publishes an article viewer with key bindings to navigate 
 * Create a new page to show your article viewer i.e `/viewer` and define the `Template` for this page as `Article Viewer` 
 * Go to your Wordpress page. i.e. http://yourdomain.com/viewer
 
-## How to start hacking the project
+## How to hack the project
 
 * Via terminal access the plugin folder and `cd article-view-wp-api-vue`
 * Inside of `article-view-wp-api-vue` folder run the command `npm install`
