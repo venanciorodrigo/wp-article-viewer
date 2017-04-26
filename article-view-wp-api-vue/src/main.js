@@ -1,21 +1,14 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
-import 'expose-loader?$!expose-loader?jQuery!jquery'
+import VueTouch from 'vue-touch'
 import App from './App.vue'
-import Article from './assets/js/components/article.vue';
 
-const router = new VueRouter({
-    routes: [
-        { name: 'article', path: '/article/:id', component: Article }
-    ]
-});
+// Swipping on touch-enabled devices
+Vue.use(VueTouch)
 
-Vue.use(VueRouter);
 Vue.use(VueResource);
 
 new Vue({
     el: '#app',
-    router,
     render: h => h(App)
 })

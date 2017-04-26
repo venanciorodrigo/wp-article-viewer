@@ -1,15 +1,33 @@
 <template>
     <div id="app">
-        <div class="categories">
-            <span>Categories:</span>
-            <template v-for="category in categories">
-                <a href="#" class="category">{{ category.name }}</a>
-            </template>
-        </div>
-        <div class="content">
-            <transition name="fade" mode="out-in">
-                <router-view :key="$route.fullPath"></router-view>
-            </transition>
+        <div v-if="posts.length">
+            <div class="categories">
+                <span>Filter:</span>
+                    <a v-on:click="getPostList" class="category all">All Categories</a>
+                <template v-for="category in categories">
+                    <a v-bind:class="{ active: isActive }" v-on:click="categoryFilter(category.id)" class="category">{{ category.name }}</a>
+                </template>
+            </div>
+            <div class="content">
+                <transition v-for="position in [currentPost]" name="fade" mode="out-in">
+                    <div transition="fade" :key="position" >
+                        <v-touch v-on:swipeleft="prev" v-on:swiperight="next">
+                            <div>
+                            <h1 v-html="posts[currentPost].title.rendered"></h1>
+
+                            <div v-if="posts[currentPost]._embedded['wp:featuredmedia']">
+                                <img v-bind:src="posts[currentPost]._embedded['wp:featuredmedia'][0].media_details.sizes['issuem-featured-rotator-image'].source_url" >
+                            </div>
+
+                            <h4 v-html="posts[currentPost].content.rendered"></h4>
+                            </div>
+                        </v-touch>
+
+                    </div>
+                </transition>
+                <div class="previous"><a href="#" v-if="currentPost > 0" v-on:click="prev"><<< Previous</a></div>
+                <div class="next"><a href="#" v-if="currentPost < posts.length - 1" v-on:click="next">Next >>></a></div>
+            </div>
         </div>
     </div>
 </template>
@@ -18,112 +36,76 @@
     export default{
         data(){
             return {
-                categories: null
+                posts: {},
+                categories: {},
+                currentPost: 0,
+                apiPath: "../wp-json/wp/v2/",
+                isActive: false,
+                categoriesSelected: null
             }
         },
         created() {
             var self = this;
 
-            // redirect to the last article created
-            if(!self.$route.params.id) {
-                self.$http.get('../wp-json/wp/v2/posts?per_page=1').then(function(response){
-                    self.$router.push({ name: 'article', params: { id: response.data[0].id }});
-                });
-            }
+            // Categories selected by the user on plugin settings
+            this.getSelectedCategories();
 
-            // Get Categories
-            self.$http.get('../wp-json/wp/v2/categories').then(function(response){
-                self.categories = response.data;
-            });
-
-            // If the key "k" or "j" was pressed...
+            // Key bindings
             window.addEventListener('keyup', function(event) {
-                var articlePrevious = self.$children[0]._data.article.next_post;
-                var articleNext = self.$children[0]._data.article.previous_post;
 
                 // Redirect to the previous post
-                if (event.keyCode == 74 && articlePrevious !== null) {
-                    self.$router.push({ name: 'article', params: { id: articlePrevious.id }});
+                if (event.keyCode == 74) {
+                    if(self.currentPost > 0)
+                        self.prev();
                 }
 
                 // Redirect to next post
-                if (event.keyCode == 75 && articleNext !== null) {
-                    self.$router.push({ name: 'article', params: { id: articleNext.id }});
+                if (event.keyCode == 75) {
+                    if(self.currentPost < self.posts.length - 1)
+                        self.next();
                 }
             });
+
         },
+        methods: {
+            next: function() {
+                if(this.currentPost < this.posts.length - 1)
+                    this.currentPost += 1
+            },
+            prev: function() {
+                if(this.currentPost > 0)
+                    this.currentPost -= 1
+            },
+            categoryFilter: function(categoryId) {
+                this.$http.get(this.apiPath + 'posts?_embed&categories=' + categoryId).then(function(response){
+                    this.currentPost = 0;
+                    this.posts = response.data;
+                });
+            },
+            getPostList: function() {
+                this.$http.get(this.apiPath + 'posts?_embed&categories=' + this.categoriesSelected).then(function(response){
+                    this.posts = response.data;
+                });
+            },
+            getCategoryList: function() {
+                this.$http.get(this.apiPath + 'categories?include=' + this.categoriesSelected).then(function(response){
+                    this.categories = response.data;
+                });
+            },
+            getSelectedCategories: function() {
+                this.$http.get(this.apiPath + 'article-viewer').then(function(response){
+                    this.categoriesSelected = response.data.toString();
+                    if(this.categoriesSelected) {
+                        // Categories List
+                        this.getCategoryList();
+
+                        // Posts List
+                        this.getPostList();
+                    }
+
+                });
+            }
+        }
     }
 </script>
-
-<style lang="scss">
-body{
-    background-color: #F3F3F3;
-}
-#app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 50px;
-}
-
-.content {
-    width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #fff;
-    padding: 10px 30px 40px;
-    border: 2px solid #EAEAEA;
-}
-
-.categories {
-    width: 760px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
-    margin-bottom: 20px;
-}
-
-.category {
-    background-color: #555555;
-    padding: 5px 10px;
-    border-radius: 5px;
-    margin: 0 5px;
-    color: #fff;
-}
-
-span {
-    font-size: 20px;
-}
-
-h1, h4 {
-  font-weight: normal;
-  text-align: left;
-}
-
-img {
-    max-width: 700px;
-    height: auto;
-}
-
-a {
-  color: #42b983;
-  text-decoration: none;
-}
-
-.fade-enter-active, .fade-leave-active {
-    transition: opacity .5s
-}
-.fade-enter, .fade-leave-active {
-    opacity: 0
-}
-
-.previous {
-    float: left;
-}
-
-.next {
-    float: right;
-}
-</style>
+<style lang="scss">@import 'main.scss'</style>
