@@ -12,9 +12,9 @@ Wordpress Plugin that publishes an article viewer with key bindings to navigate 
 
 ## Getting Started
 
-* Download last plugin release.
+* Download the last plugin release.
 * Decompress it into your WP plugin folder.
-* Activate via plugin admin `wp-admin/plugins.php`
+* Activate via admin plugins `wp-admin/plugins.php`
 * Go to the plugin settings (It will create a new menu called `Article Viewer` on you WP Admin).
 * Select the categories that you want to show.
 * Create a new page to show your article viewer i.e `/viewer` and define the `Template` for this page as `Article Viewer` 
