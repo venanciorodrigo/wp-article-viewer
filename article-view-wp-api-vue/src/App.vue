@@ -16,7 +16,7 @@
                             <h1 v-html="posts[currentPost].title.rendered"></h1>
 
                             <div v-if="posts[currentPost]._embedded['wp:featuredmedia']">
-                                <img v-bind:src="posts[currentPost]._embedded['wp:featuredmedia'][0].media_details.sizes['issuem-featured-rotator-image'].source_url" >
+                                <img v-bind:src="posts[currentPost]._embedded['wp:featuredmedia'][0].media_details.sizes['full'].source_url" >
                             </div>
 
                             <h4 v-html="posts[currentPost].content.rendered"></h4>
