@@ -6,7 +6,7 @@ Wordpress Plugin that publishes an article viewer with key bindings to navigate 
 
 * Wordpress https://wordpress.com/
 * Vue.js v2 https://vuejs.org/
-* WP-API v2 http://v2.wp-api.org/ 
+* WP-API v2 http://v2.wp-api.org/
 
 ![Image](https://d2ppvlu71ri8gs.cloudfront.net/items/1c1V3d2j2a442B0Y3U3K/Image%202017-04-26%20at%204.12.01%20am.png?v=dcffbac5)
 
@@ -17,7 +17,7 @@ Wordpress Plugin that publishes an article viewer with key bindings to navigate 
 * Activate via admin plugins `wp-admin/plugins.php`
 * Go to the plugin settings (It will create a new menu called `Article Viewer` on your WP Admin).
 * Select the categories that you want to show.
-* Create a new page to show the plugin in action i.e `/viewer` and define the `Template` for this page as `Article Viewer` 
+* Create a new page to show the plugin in action i.e `/viewer` and define the `Template` for this page as `Article Viewer`
 * Go to your Wordpress page. i.e. http://yourdomain.com/viewer
 
 ## How to hack the project
@@ -25,11 +25,6 @@ Wordpress Plugin that publishes an article viewer with key bindings to navigate 
 * Via terminal access the plugin folder and `cd article-view-wp-api-vue`
 * Inside of `article-view-wp-api-vue` folder run the command `npm install`
 * After that just run `npm run dev` and you're abble to make changes on the project.
-
-## Live Demo
-http://www.rodrigovenancio.info/viewer/
-
-![Image](https://d2ppvlu71ri8gs.cloudfront.net/items/24172i2s1B3F2D0o380a/Image%202017-04-26%20at%205.38.12%20pm.png?v=9b9c5a09)
 
 ## Author
 
