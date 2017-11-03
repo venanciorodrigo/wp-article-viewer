@@ -25,8 +25,8 @@
 
                     </div>
                 </transition>
-                <div class="previous"><a href="#" v-if="currentPost > 0" v-on:click="prev">< Previous</a></div>
-                <div class="next"><a href="#" v-if="currentPost < posts.length - 1" v-on:click="next">Next ></a></div>
+                <div class="previous"><a href="#" v-if="currentPost > 0" v-on:click="prev"><<<< Previous</a></div>
+                <div class="next"><a href="#" v-if="currentPost < posts.length - 1" v-on:click="next">Next >>>></a></div>
             </div>
         </div>
     </div>
