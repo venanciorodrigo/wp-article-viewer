@@ -28,6 +28,8 @@ Wordpress Plugin that publishes an article viewer with key bindings to navigate 
 
 ## Demo
 
+![Image](https://dzwonsemrish7.cloudfront.net/items/2F2Q3E173O0a241V2K0L/Screen%20Recording%202018-09-15%20at%2012.31%20pm.gif)
+
 http://rodrigovenancio.info/viewer
 
 ## Author
