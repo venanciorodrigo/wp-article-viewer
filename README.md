@@ -26,6 +26,10 @@ Wordpress Plugin that publishes an article viewer with key bindings to navigate 
 * Inside of `article-view-wp-api-vue` folder run the command `npm install`
 * After that just run `npm run dev` and you're abble to make changes on the project.
 
+## Demo
+
+http://rodrigovenancio.info/viewer
+
 ## Author
 
 * **Rodrigo Venancio** - http://rodrigovenancio.info/
