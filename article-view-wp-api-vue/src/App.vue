@@ -54,13 +54,13 @@
             window.addEventListener('keyup', function(event) {
 
                 // Redirect to the previous post
-                if (event.keyCode == 74) {
+                if (event.keyCode == 37) {
                     if(self.currentPost > 0)
                         self.prev();
                 }
 
                 // Redirect to next post
-                if (event.keyCode == 75) {
+                if (event.keyCode == 39) {
                     if(self.currentPost < self.posts.length - 1)
                         self.next();
                 }
