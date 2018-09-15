@@ -1,6 +1,6 @@
 # WP Article Viewer
 
-Wordpress Plugin that publishes an article viewer with key bindings to navigate to the previous / next article. Use "J (Previous) and "K" for forward. Support for swipping on touch-enabled devices :)
+Wordpress Plugin that publishes an article viewer with key bindings to navigate to the previous / next article. Use "< (Previous) and ">" for forward. Support for swipping on touch-enabled devices :)
 
 ## Built With
 
@@ -8,7 +8,7 @@ Wordpress Plugin that publishes an article viewer with key bindings to navigate 
 * Vue.js v2 https://vuejs.org/
 * WP-API v2 http://v2.wp-api.org/
 
-![Image](https://d2ppvlu71ri8gs.cloudfront.net/items/1c1V3d2j2a442B0Y3U3K/Image%202017-04-26%20at%204.12.01%20am.png?v=dcffbac5)
+![Image](https://dzwonsemrish7.cloudfront.net/items/022S2n2l2Q1P3c1H3p46/Image%202018-09-15%20at%2010.38.35%20am.png)
 
 ## Getting Started
 
