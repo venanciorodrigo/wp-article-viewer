@@ -2,7 +2,7 @@
 
 Wordpress Plugin that publishes an article viewer with key bindings with animations to navigate to the previous / next article. 
 
-Use **<** (Previous) and **>** for forward. Support for swipping on touch-enabled devices :)
+Use **<** (Previous) and **>** for forward. Support for swipping on touch-enabled devices :beer:
 
 ## Built With
 
